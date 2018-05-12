@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="sistemapedidosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="fornecedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="nchar" MaxLength="50" />
+          <Property Name="cnpj" Type="nchar" MaxLength="50" />
+          <Property Name="uf" Type="nchar" MaxLength="50" />
+          <Property Name="email" Type="nchar" MaxLength="50" />
+          <Property Name="razao" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="id_produto" Type="int" />
+          <Property Name="quantidade" Type="int" />
+          <Property Name="id_fornecedor" Type="int" />
+          <Property Name="valortotal" Type="float" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="50" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="valor" Type="float" />
+        </EntityType>
+        <Association Name="FK_pedidos_fornecedor">
+          <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="0..1" />
+          <End Role="pedidos" Type="Self.pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fornecedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedidos">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pedidos_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="0..1" />
+          <End Role="pedidos" Type="Self.pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedidos">
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sistemapedidosModelStoreContainer">
+          <EntitySet Name="fornecedor" EntityType="Self.fornecedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedidos" EntityType="Self.pedidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produto" EntityType="Self.produto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_pedidos_fornecedor" Association="Self.FK_pedidos_fornecedor">
+            <End Role="fornecedor" EntitySet="fornecedor" />
+            <End Role="pedidos" EntitySet="pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pedidos_produto" Association="Self.FK_pedidos_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="pedidos" EntitySet="pedidos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sistemapedidosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="sistemapedidosEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="fornecedor" EntityType="sistemapedidosModel.fornecedor" />
+          <EntitySet Name="pedidos" EntityType="sistemapedidosModel.pedidos" />
+          <EntitySet Name="produto" EntityType="sistemapedidosModel.produto" />
+          <AssociationSet Name="FK_pedidos_fornecedor" Association="sistemapedidosModel.FK_pedidos_fornecedor">
+            <End Role="fornecedor" EntitySet="fornecedor" />
+            <End Role="pedidos" EntitySet="pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pedidos_produto" Association="sistemapedidosModel.FK_pedidos_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="pedidos" EntitySet="pedidos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="fornecedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="cnpj" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="uf" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="razao" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="pedidos" Relationship="sistemapedidosModel.FK_pedidos_fornecedor" FromRole="fornecedor" ToRole="pedidos" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="id_produto" Type="Int32" />
+          <Property Name="quantidade" Type="Int32" />
+          <Property Name="id_fornecedor" Type="Int32" />
+          <Property Name="valortotal" Type="Double" />
+          <NavigationProperty Name="fornecedor" Relationship="sistemapedidosModel.FK_pedidos_fornecedor" FromRole="pedidos" ToRole="fornecedor" />
+          <NavigationProperty Name="produto" Relationship="sistemapedidosModel.FK_pedidos_produto" FromRole="pedidos" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="valor" Type="Double" />
+          <NavigationProperty Name="pedidos" Relationship="sistemapedidosModel.FK_pedidos_produto" FromRole="produto" ToRole="pedidos" />
+        </EntityType>
+        <Association Name="FK_pedidos_fornecedor">
+          <End Type="sistemapedidosModel.fornecedor" Role="fornecedor" Multiplicity="0..1" />
+          <End Type="sistemapedidosModel.pedidos" Role="pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fornecedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedidos">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pedidos_produto">
+          <End Type="sistemapedidosModel.produto" Role="produto" Multiplicity="0..1" />
+          <End Type="sistemapedidosModel.pedidos" Role="pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedidos">
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sistemapedidosModelStoreContainer" CdmEntityContainer="sistemapedidosEntities1">
+          <EntitySetMapping Name="fornecedor">
+            <EntityTypeMapping TypeName="sistemapedidosModel.fornecedor">
+              <MappingFragment StoreEntitySet="fornecedor">
+                <ScalarProperty Name="razao" ColumnName="razao" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos">
+            <EntityTypeMapping TypeName="sistemapedidosModel.pedidos">
+              <MappingFragment StoreEntitySet="pedidos">
+                <ScalarProperty Name="valortotal" ColumnName="valortotal" />
+                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produto">
+            <EntityTypeMapping TypeName="sistemapedidosModel.produto">
+              <MappingFragment StoreEntitySet="produto">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

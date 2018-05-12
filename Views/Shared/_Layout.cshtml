@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #4b3b98;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Sistemas de Pedidos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Fornecedor", "Index", "Fornecedor")</li>
+                    <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+                    <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Maykel Trejo</p>
+        </footer>
+    </div>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+  
+     @RenderSection("scripts", required: false)
+    
+
+    
+           
+</body>
+</html>
+<script>
+    $('.number').keypress(function (event) {
+        if ((event.which != 44 || $(this).val().indexOf(',') != -1) && (event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $(".Letras").keypress(function (key) {
+        window.console.log(key.charCode)
+        if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
+            && (key.charCode < 65 || key.charCode > 90) //letras minusculas
+            && (key.charCode != 45) //retroceso
+            && (key.charCode != 241) //ñ
+            && (key.charCode != 209) //Ñ
+            && (key.charCode != 32) //espacio
+            && (key.charCode != 225) //á
+            && (key.charCode != 233) //é
+            && (key.charCode != 237) //í
+            && (key.charCode != 243) //ó
+            && (key.charCode != 250) //ú
+            && (key.charCode != 193) //Á
+            && (key.charCode != 201) //É
+            && (key.charCode != 205) //Í
+            && (key.charCode != 211) //Ó
+            && (key.charCode != 218) //Ú
+
+        )
+            return false;
+    });
+
+  
+
+    function justNumbers(e) {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8 || keynum == 48))
+            return true;
+        if (keynum <= 47 || keynum >= 58) return false;
+        return /\d/.test(String.fromCharCode(keynum));
+    }
+
+    function soloLetras(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return true;
+
+        return false;
+    }
+</script>
+

@@ -1,0 +1,59 @@
+﻿@model sistemadepedidos.Models.fornecedor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes do Fornecedor</h2>
+
+<div>
+    <h4>fornecedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.razao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.razao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Voltar à lista", "Index")
+</p>

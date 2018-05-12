@@ -1,0 +1,61 @@
+﻿@model IEnumerable<sistemadepedidos.Models.produto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listagem dos produtos</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Data do Cadastro
+        </th>
+        <th>
+            Valor do Produto
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.id )
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.id }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.id },new { @class = "aEliminar btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+@section scripts{
+    <script>
+    $(".aEliminar").click(function(event){
+        if(!confirm('Estas seguro de eliminar produto ?')) {
+            event.preventDefault();
+        }
+    });
+    </script>
+}

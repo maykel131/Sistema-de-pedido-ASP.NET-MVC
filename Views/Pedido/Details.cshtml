@@ -1,0 +1,59 @@
+﻿@model sistemadepedidos.Models.pedidos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes do pedido</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+    
+        <dt>
+            PRODUTO CODIGO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_produto)
+        </dd>
+
+        <dt>
+           QUANTIDADE
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+        <dt>
+            ID FORNECEDOR
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_fornecedor)
+        </dd>
+        <dt>
+            DATA DO PEDIDO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            VALOR TOTAL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valortotal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Voltar à lista", "Index")
+</p>

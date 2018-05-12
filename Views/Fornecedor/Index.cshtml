@@ -1,0 +1,67 @@
+﻿@model IEnumerable<sistemadepedidos.Models.fornecedor>
+
+@{
+    ViewBag.Title = "Listagem dos Fornecedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listagem dos Fornecedores</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nome Contato
+        </th>
+        <th>
+            CNPJ
+        </th>
+        <th>
+            UF
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Razão Social
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.razao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.id }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.id },new { @class = "aEliminar btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+@section scripts{
+<script>
+    $(".aEliminar").click(function(event){
+        if(!confirm('Estas seguro de eliminar ?')) {
+            event.preventDefault();
+        }
+    });
+    </script>
+}

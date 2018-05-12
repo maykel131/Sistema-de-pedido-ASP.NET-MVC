@@ -1,0 +1,9 @@
+﻿@model IEnumerable<sistemadepedidos.Models.produto>
+
+<select class="form-control" id="id_produto" name="id_produto">
+    @foreach (var item in Model)
+    {
+        <option value="@item.id">@item.descripcion</option>
+    }
+
+</select>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<sistemadepedidos.Models.pedidos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listagem dos pedidos</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Fornecedor
+        </th>
+        <th>
+            Nome do Produto
+        </th>
+        <th>
+            Quantidade
+        </th>
+        <th>
+            Valor Total do Pedido
+        </th>
+        <th>
+            Data do Pedido
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @sistemadepedidos.Controllers.PedidoController.ObterNomeFornecedor(Convert.ToInt32(item.id_fornecedor))
+        </td>
+        <td>
+            @sistemadepedidos.Controllers.PedidoController.ObterNomeProduto(Convert.ToInt32(item.id_produto))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valortotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id },new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.id }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.id }, new { @class = "aEliminar btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+@section scripts{
+    <script>
+    $(".aEliminar").click(function(event){
+        if(!confirm('Estas seguro de eliminar ?')) {
+            event.preventDefault();
+        }
+    });
+    </script>
+}

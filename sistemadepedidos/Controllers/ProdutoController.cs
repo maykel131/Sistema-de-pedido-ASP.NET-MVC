@@ -38,6 +38,7 @@ namespace sistemadepedidos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(produto a)
         {
+            a.valor = a.valor;
             if (!ModelState.IsValid) { return View(); }
             try
             {

@@ -4,8 +4,8 @@
     ViewBag.Title = "CRIAR NOVO";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Cadastrar Novo Fornecedor</h2>
+<br />
+<h2 style="text-align: center;" >Cadastrar Novo Fornecedor</h2>
 
 
 @using (Html.BeginForm()) 
@@ -58,7 +58,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary agregar" />
             </div>
         </div>
     </div>
@@ -70,6 +70,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+         $(".agregar").click(function (event) {
+                 alertify.success("Adicionado com succesos");
+         });
+    </script>
 
 
 }

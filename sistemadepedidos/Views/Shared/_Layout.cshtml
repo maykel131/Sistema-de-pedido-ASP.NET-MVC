@@ -1,104 +1,147 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-   
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+           function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <!-- Custom Theme files -->
+    <link href="~/Content/livrarias/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/livrarias/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/livrarias/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/livrarias/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- alertify -->
+    <link rel="stylesheet" type="text/css" href="~/Content/alertify/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/alertify/css/themes/bootstrap.css">
+
+
+    <script src="~/Content/alertify/alertify.js"></script>
+    <!-- //Custom Theme files -->
+    <!-- font-awesome icons -->
+    <link href="~/Content/livrarias/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="~/Content/livrarias/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Content/livrarias/css/jquery.countdown.css" /> <!-- countdown -->
+    <!-- //js -->
+    <!-- web fonts -->
+    <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //web fonts -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #4b3b98;">
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="~/Content/livrarias/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- header modal -->
+    <!-- header modal -->
+    <!-- header -->
+    <div class="header" id="home1">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Sistemas de Pedidos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <div class="w3l_logo">
+                <h1><a href="#">Sistema de Pedidos<span>Sua loja. Sua melhor escolha.</span></a></h1>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Fornecedor", "Index", "Fornecedor")</li>
-                    <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
-                    <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
-                </ul>
+            <div class="search">
+                <input class="search_box" type="checkbox" id="search_box">
+            </div>
+
+        </div>
+    </div>
+    <!-- //header -->
+    <!-- navigation -->
+    <div class="navigation">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header nav_2">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            @Html.ActionLink("Início", "Index", "Home")
+                        </li>
+                        <!-- Mega Menu -->
+                        <li>
+                            @Html.ActionLink("Fornecedor", "Index", "Fornecedor")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Produto", "Index", "Produto")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Pedidos", "Index", "Pedido")
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- //navigation -->
+    <!-- banner -->
+
+
+    <div class="container body-content">
+        @RenderBody()
+  
+    </div>
+
+
+
+
+    <!-- //newsletter -->
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+
+        </div>
+        <div class="footer-copy">
+            <div class="container">
+                <p>&copy; 2018 Sistema de pedidos. Todos os direitos reservados | Design by <a href="https://maykeltrejo.demo.site/">Maykel Trejo</a></p>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Maykel Trejo</p>
-        </footer>
-    </div>
-    
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+    <!-- //footer -->
+    <!-- cart-js -->
+    <script src="~/Content/livrarias/js/minicart.js"></script>
+  
+    <!-- //cart-js -->
+
+    @RenderSection("scripts", required: false)
+    
 
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-  
-     @RenderSection("scripts", required: false)
-    
-
-    
-           
+    <script src="~/Scripts/miscript.js"></script>
 </body>
 </html>
-<script>
-    $('.number').keypress(function (event) {
-        if ((event.which != 44 || $(this).val().indexOf(',') != -1) && (event.which < 48 || event.which > 57)) {
-            event.preventDefault();
-        }
-    });
 
-    $(".Letras").keypress(function (key) {
-        window.console.log(key.charCode)
-        if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
-            && (key.charCode < 65 || key.charCode > 90) //letras minusculas
-            && (key.charCode != 45) //retroceso
-            && (key.charCode != 241) //ñ
-            && (key.charCode != 209) //Ñ
-            && (key.charCode != 32) //espacio
-            && (key.charCode != 225) //á
-            && (key.charCode != 233) //é
-            && (key.charCode != 237) //í
-            && (key.charCode != 243) //ó
-            && (key.charCode != 250) //ú
-            && (key.charCode != 193) //Á
-            && (key.charCode != 201) //É
-            && (key.charCode != 205) //Í
-            && (key.charCode != 211) //Ó
-            && (key.charCode != 218) //Ú
 
-        )
-            return false;
-    });
 
-  
 
-    function justNumbers(e) {
-        var keynum = window.event ? window.event.keyCode : e.which;
-        if ((keynum == 8 || keynum == 48))
-            return true;
-        if (keynum <= 47 || keynum >= 58) return false;
-        return /\d/.test(String.fromCharCode(keynum));
-    }
-
-    function soloLetras(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return true;
-
-        return false;
-    }
-</script>
 

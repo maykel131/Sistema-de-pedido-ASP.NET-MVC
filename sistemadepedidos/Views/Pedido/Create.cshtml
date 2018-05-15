@@ -4,8 +4,8 @@
     ViewBag.Title = "Criar Novo Pedido";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Criar Pedido</h2>
+<br />
+<h2 style="text-align: center;">Criar Pedido</h2>
 
 
 @using (Html.BeginForm()) 
@@ -29,7 +29,7 @@
         <div class="form-group">
             @Html.Label("quantidade", "Quantidade", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.quantidade, new { htmlAttributes = new { @class = "form-control", @onkeypress = "return justNumbers(event);" } })
+                @Html.EditorFor(Model => Model.quantidade, new { htmlAttributes = new { @class = "form-control", @onkeypress = "return justNumbers(event);" } })
                 @Html.ValidationMessageFor(model => model.quantidade, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,16 +46,21 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary agregar" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar à lista", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+         $(".agregar").click(function (event) {
+                 alertify.success("Adicionado com succesos");
+         });
+    </script>
 }

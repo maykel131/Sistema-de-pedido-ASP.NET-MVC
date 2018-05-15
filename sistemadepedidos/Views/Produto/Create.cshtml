@@ -4,8 +4,8 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Novo Produto</h2>
+<br/>  
+<h2 style="text-align: center;" >Novo Produto</h2>
 
 
 @using (Html.BeginForm()) 
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.Label("descripcion", "Descrição", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control Letras" } })
+                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -47,4 +47,9 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+   <script>
+         $(".agregar").click(function (event) {
+                 alertify.success("Adicionado com succesos");
+         });
+   </script>
 }

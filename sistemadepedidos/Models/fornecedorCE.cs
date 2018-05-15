@@ -9,20 +9,20 @@ namespace sistemadepedidos.Models
     public class fornecedorCE
     {
         [Required]
-        [Display(Name ="Ingrese Nome")]
+        [Display(Name ="Nome")]
         public string nome { get; set; }
         [Required]
-        [Display(Name = "Ingrese CNPJ")]
+        [Display(Name = "CNPJ")]
         public string cnpj { get; set; }
         [Required]
-        [Display(Name = "Ingrese UF")]
+        [Display(Name = "UF")]
         public string uf { get; set; }
         [Required]
         [EmailAddress]
-        [Display(Name = "Ingrese EMAIL")]
+        [Display(Name = "EMAIL")]
         public string email { get; set; }
         [Required]
-        [Display(Name = "Ingrese Razão Social")]
+        [Display(Name = "Razão Social")]
         public string razao { get; set; }
     }
     [MetadataType(typeof(fornecedorCE))]

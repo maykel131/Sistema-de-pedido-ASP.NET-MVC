@@ -4,8 +4,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Listagem dos produtos</h2>
+<br/>
+<h2 style="text-align: center;">Listagem dos produtos</h2>
 
 <p>
     @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-primary" })
@@ -55,6 +55,8 @@
     $(".aEliminar").click(function(event){
         if(!confirm('Estas seguro de eliminar produto ?')) {
             event.preventDefault();
+        }else{
+            alertify.success("Apagado com sucesso");
         }
     });
     </script>

@@ -4,8 +4,8 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Editar Produto</h2>
+<br />
+<h2 style="text-align: center;" >Editar Produto</h2>
 
 
 @using (Html.BeginForm())
@@ -21,7 +21,7 @@
         <div class="form-group">
             @Html.Label("descripcion", "Descrição", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control", @onkeypress = "return soloLetras(event);" } })
+                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
             @Html.Label("Valor", "Valor do Produto", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.valor, new { htmlAttributes = new { @class = "form-control", @onkeypress = "return justNumbers(event);" } })
+                @Html.EditorFor(model => model.valor, new { htmlAttributes = new { @class = "form-control number" } })
                 @Html.ValidationMessageFor(model => model.valor, "", new { @class = "text-danger" })
             </div>
         </div>
